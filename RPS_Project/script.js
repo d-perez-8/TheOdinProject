@@ -68,8 +68,10 @@ function game() {
         console.log("Computer: " + computerScore);
     } if (playerScore > computerScore) {
         return "Congrats! You win!";
+    } else if (playerScore < computerScore){
+        "Unlucky, you lose."
     } else {
-        return "Unlucky, you lose.";
+        return "It's a tie!";
     }
 }
 
