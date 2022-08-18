@@ -1,0 +1,44 @@
+/* Index Page */
+.recipes {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+/* All pages */
+img {
+    height: auto;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tortilla Page */
+.tortilla-title {
+    color: red;
+    background-color: yellow;
+}
+
+.tortilla-body {
+    background-color: lightyellow;
+}
+
+/* Tiramisu Page */
+.tiramisu-title {
+    color: #bd3d3d;
+    background-color: #189647;
+}
+
+.tiramisu-body {
+    background-color: lightgreen;
+}
+
+/* Al Pastor Theme */
+.pastor-title {
+    font-weight: bolder;
+    color: white;
+    background-color: #006341;
+}
+
+.pastor-body {
+    background-color: lightcoral;
+}
