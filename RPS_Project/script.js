@@ -16,33 +16,61 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection = getComputerChoice()) {
+    // get user answer and standarize answer
     playerSelection = prompt("Enter choice: \n(Rock, Paper, Scissors)");
     playerSelection = playerSelection.toLowerCase();
 
+    // logic for rock
     if (playerSelection == "rock" && computerSelection == "scissors") {
+        playerScore++;
         return "You win! Rock beats Scissors.";
     } else if (playerSelection == "rock" && computerSelection == "paper") {
+        computerScore++;
         return "You lose! Rock loses to Paper.";
     } else if (playerSelection == 'rock' && computerSelection == 'rock') {
         return "Tie! You both picked rock.";
 
+    // logic for paper
     } else if (playerSelection == "paper" && computerSelection == "rock") {
+        playerScore++;
         return "You win! Paper beats rock.";
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+        computerScore++;
         return "You lose! Paper loses to scissors.";
     } else if (playerSelection == 'paper' && computerSelection == 'paper') {
         return "Tie! You both picked paper.";
     
+    // logic for scissors
     } else if (playerSelection == '[scissors]' && computerSelection == 'paper') {
+        playerScore++;
         return "You win! Scissors beats paper.";
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+        computerScore++;
         return "You lose! Scissors loses to rock.";
     } else if (playerSelection == 'scissors' && computerSelection == 'scissors') {
         return "Tie! You both picked scissors.";
 
+    // unexpected user answer
     } else {
         return "Please enter a valid answer. \n(Rock, Paper, Scissors)";
     }
 }
 
-console.log(playRound());
+// plays five games and keeps score
+function game() {
+    playerScore = 0;
+    computerScore = 0;
+
+    // Fix: keeps going until there's 5 points for each.
+    for (let i = 0; i < 5; i++) {
+        playRound();
+        console.log("Player: " + playerScore);
+        console.log("Computer: " + computerScore);
+    } if (playerScore > computerScore) {
+        return "Congrats! You win!";
+    } else {
+        return "Unlucky, you lose.";
+    }
+}
+
+console.log(game());
