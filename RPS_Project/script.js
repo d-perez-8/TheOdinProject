@@ -1,5 +1,20 @@
 const choices = document.querySelectorAll('button');
 
+const OUTCOMES = [
+    {
+        pick: 'rock',  
+        beats: 'scissors',
+    },
+    {
+        pick: 'paper',
+        beats: 'rock',
+    },
+    {
+        pick: 'scissors',
+        beats: 'paper',
+    }
+];
+
 // gets the value from the button
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
@@ -9,23 +24,9 @@ choices.forEach(choice => {
 });
 
 
-// create random number function
-function getRandomInt(max = 3) {
-    return Math.floor(Math.random() * max)
+function computerChoice() {
+    return Math.floor(Math.random() * OUTCOMES.length)
 }
-
-// create output function
-function getComputerChoice() {
-    // assign numbers to output
-    if (getRandomInt() == 0) {
-        return "rock";
-    } if (getRandomInt() == 1) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
-}
-
 
 function playRound(playerSelection, computerSelection = getComputerChoice()) {
     let computerScore = 0;
