@@ -1,3 +1,14 @@
+const choices = document.querySelectorAll('button');
+
+// gets the value from the button
+choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+        const choiceName= choice.value;
+        playRound(choiceName);
+    })
+});
+
+
 // create random number function
 function getRandomInt(max = 3) {
     return Math.floor(Math.random() * max)
@@ -15,10 +26,10 @@ function getComputerChoice() {
     }
 }
 
+
 function playRound(playerSelection, computerSelection = getComputerChoice()) {
-    // get user answer and standarize answer
-    playerSelection = prompt("Enter choice: \n(Rock, Paper, Scissors)");
-    playerSelection = playerSelection.toLowerCase();
+    let computerScore = 0;
+    let playerScore = 0;
 
     // logic for rock
     if (playerSelection == "rock" && computerSelection == "scissors") {
@@ -53,15 +64,15 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
     // unexpected user answer
     } else {
         return "Please enter a valid answer. \n(Rock, Paper, Scissors)";
-    }
+    }    
 }
+
 
 // plays five games and keeps score
 function game() {
     playerScore = 0;
     computerScore = 0;
 
-    // Fix: keeps going until there's 5 points for each.
     for (let i = 0; i < 5; i++) {
         playRound();
         console.log("Player: " + playerScore);
@@ -75,4 +86,4 @@ function game() {
     }
 }
 
-console.log(game());
+// console.log(game());
