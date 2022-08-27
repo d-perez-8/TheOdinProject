@@ -22,17 +22,20 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
         (playerSelection == 'Scissors' && computerSelection == 'Paper')) {
 
         playerScore++;
-        results.textContent = `You win! ${playerSelection} beats ${computerSelection}. Player: ${playerScore} Computer: ${computerScore}`;
+        results.textContent = `You win! ${playerSelection} beats ${computerSelection}. 
+        Player: ${playerScore} Computer: ${computerScore}`;
             
             if (playerScore === 5) {
                 results.textContent += " You win!";
             }
 
     } else if (playerSelection === computerSelection) {
-        results.textContent = `You tie! ${playerSelection} draws ${computerSelection}. Player: ${playerScore} Computer: ${computerScore}`;
+        results.textContent = `You tie! ${playerSelection} draws ${computerSelection}. 
+        Player: ${playerScore} Computer: ${computerScore}`;
     } else {
         computerScore++;
-        results.textContent = `You lose! ${playerSelection} loses to ${computerSelection}. Player: ${playerScore} Computer: ${computerScore}`;
+        results.textContent = `You lose! ${playerSelection} loses to ${computerSelection}. 
+        Player: ${playerScore} Computer: ${computerScore}`;
 
             if (computerScore === 5) {
                 results.textContent += " You lose!";
