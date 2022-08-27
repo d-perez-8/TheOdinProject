@@ -1,4 +1,6 @@
 const btns = document.querySelectorAll('button');
+let playerScore = 0;
+let computerScore = 0;
 
 // gets the value from the button
 btns.forEach(btn => {
@@ -21,22 +23,35 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
         (playerSelection == 'Paper' && computerSelection == 'Rock') || 
         (playerSelection == 'Scissors' && computerSelection == 'Paper')) {
 
-        results.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+        playerScore++;
+        results.textContent = `You win! ${playerSelection} beats ${computerSelection}. Player: ${playerScore} Computer: ${computerScore}`;
+            
+            if (playerScore === 5) {
+                results.textContent += " You win!";
+            }
 
     } else if (playerSelection === computerSelection) {
-        results.textContent = `You tie! ${playerSelection} draws ${computerSelection}.`;
+
+        results.textContent = `You tie! ${playerSelection} draws ${computerSelection}. Player: ${playerScore} Computer: ${computerScore}`;
+
     } else {
-        results.textContent = `You lose! ${playerSelection} loses to ${computerSelection}.`;
+
+        computerScore++;
+        results.textContent = `You lose! ${playerSelection} loses to ${computerSelection}. Player: ${playerScore} Computer: ${computerScore}`;
+
+            if (computerScore === 5) {
+                results.textContent += " You lose!";
+            }
     }
 }
-
+/*
 // plays five games and keeps score
 function game() {
     playerScore = 0;
     computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        playRound(btn.value);
+        playRound();
         console.log("Player: " + playerScore);
         console.log("Computer: " + computerScore);
     } if (playerScore > computerScore) {
@@ -47,5 +62,5 @@ function game() {
         return "It's a tie!";
     }
 }
-
+*/
 // console.log(game());
