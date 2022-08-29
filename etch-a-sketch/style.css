@@ -1,4 +1,54 @@
-/* Styles for the legend */
+body {
+    border: thick black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    border: solid thick black;
+    background-color: whitesmoke;
+
+}
 
 
-/*Styles for the sketchpad */
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+/* Content Styles */
+.content {
+    border: solid thin black;
+    display: flex;
+    justify-content: space-evenly;
+    width: 1000px;
+}
+
+.legend {
+    border: solid thin green;
+    width: 200px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sketchpad {
+    border: solid thin orange;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.pick-color, .clear-sketch {
+    background-color: lightblue;
+    display: flex;
+    margin: 10px;
+}
+
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
