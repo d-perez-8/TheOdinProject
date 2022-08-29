@@ -1,31 +1,30 @@
 body {
-    border: thick black;
+    font-family: 'Courier New', Courier, monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
-    border: solid thick black;
-    background-color: whitesmoke;
-
+    height: 100vh;
+    width: auto;
 }
 
 
-/* Header Styles */
+/* Header & Footer Styles */
 .header {
     display: flex;
-    justify-content: center;
+    align-items: end;
 }
-
 /* Content Styles */
 .content {
-    border: solid thin black;
     display: flex;
     justify-content: space-evenly;
     width: 1000px;
+    padding: 5em;
+    flex: 1;
 }
 
-.legend {
-    border: solid thin green;
+.settings {
+    background-color: whitesmoke;
     width: 200px ;
     display: flex;
     flex-direction: column;
@@ -33,22 +32,24 @@ body {
 }
 
 .sketchpad {
-    border: solid thin orange;
+    background-color: whitesmoke;
     width: 500px;
     display: flex;
     justify-content: center;
 }
 
-.pick-color, .clear-sketch {
-    background-color: lightblue;
+button {
     display: flex;
     margin: 10px;
+    width: 120px;
+    justify-content: center;
+    padding: 5px;
+    border: solid thin black;
+    border-radius: 5px;
+    background-color: white;
 }
 
-
-/* Footer */
 .footer {
     display: flex;
-    justify-content: center;
-    align-items: end;
+    justify-content: flex-end;
 }
