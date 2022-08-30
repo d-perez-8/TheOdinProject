@@ -19,7 +19,8 @@ body {
 /* Content Styles */
 .content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 5px;
     width: 1000px;
     padding: 5em 0em;
     flex: 1;
@@ -32,6 +33,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.slider:hover {
+    opacity: 1;
 }
 
 .sketchpad {
@@ -57,6 +62,15 @@ button {
     border: solid thin black;
     border-radius: 5px;
     background-color: white;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+p, #cellSize {
+    display: flex;
+    justify-content: center;
 }
 
 .footer {

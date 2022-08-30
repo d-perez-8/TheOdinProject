@@ -17,9 +17,19 @@ gridCell.forEach(square => {
     })
 });
 
+// slider value
+const slider = document.querySelector('#range');
+const output = document.querySelector('#cellSize');
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+    output.innerHTML = slider.value;
+}
+
 // make sure buttons work
 btns.forEach(btn => {
     btn.addEventListener('click', e => {
         console.log("Clicked!");
     })
 });
+
