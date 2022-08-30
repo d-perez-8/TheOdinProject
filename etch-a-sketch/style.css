@@ -1,6 +1,7 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
     margin: 0;
@@ -26,27 +27,25 @@ body {
 
 .settings {
     background-color: whitesmoke;
-    width: 200px ;
+    width: 200px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .sketchpad {
-    background-color: whitesmoke;
-    width: 500px;
-    justify-content: center;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    box-sizing: border-box;
+    height: 400px;
+    width: 400px;
+    background-color: grey;
 }
 
-.cell {
-    display: grid;
+.sketchpad > .cell {
     background-color: pink;
-    border: thin solid black;
-    width: 50px;
-    height: 50px;
-
+    border: 1px black solid;
 }
 
 button {

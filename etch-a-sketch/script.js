@@ -1,6 +1,7 @@
 const btns = document.querySelectorAll('button');
 const sketchpad = document.querySelector('.sketchpad');
-let grid = 4;
+let grid = 16;
+
 // create sketchpad
 // function makeSketchpad (grid) {
     for (let i = 0; i < grid * grid; i++) {
