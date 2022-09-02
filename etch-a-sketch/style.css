@@ -41,14 +41,13 @@ body {
 
 .sketchpad {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
     box-sizing: border-box;
     height: 400px;
     width: 400px;
     background-color: grey;
 }
 
-.sketchpad > .cell {
+.cell {
     background-color: pink;
     border: 1px black solid;
 }
