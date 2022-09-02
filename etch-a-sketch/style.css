@@ -45,11 +45,11 @@ body {
     height: 400px;
     width: 400px;
     background-color: grey;
+    border: 2px black solid;
 }
 
 .cell {
-    background-color: pink;
-    border: 1px black solid;
+    background-color: white;
 }
 
 button {

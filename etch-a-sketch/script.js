@@ -1,19 +1,25 @@
 let size = 16;
+let color = 'black';
 
 const sketchpad = document.querySelector('.sketchpad');
 const slider    = document.querySelector('.slider');
 const cellSize  = document.querySelector('.cellSize');
 const clearBtn  = document.querySelector('.clear-sketch');
-const cellDiv   = document.querySelector('.cell');
+const colorBtn  = document.querySelector('.pick-color');
 
 clearBtn.addEventListener("click", clearSketchpad);
+colorBtn.addEventListener("click", pickColor);
 
 // Output for cell size
-cellSize.innerHTML = slider.value;
+cellSize.innerHTML = size;
+
+// Resizes sketchpad to slider value
 slider.oninput = function() {
     cellSize.innerHTML = slider.value;
     size = cellSize.innerHTML;
-    console.log(size);
+    cellSize.textContent = size;
+    setupSketchpad(size);
+    clearSketchpad();
 }
 
 // creates sketchpad to size
@@ -26,7 +32,7 @@ function setupSketchpad (size) {
         const newSize = document.createElement('div');
         newSize.classList.add('cell');
         newSize.addEventListener('mouseover', e => {
-            e.target.style.backgroundColor = 'black';
+            e.target.style.backgroundColor = color;
         })
         sketchpad.appendChild(newSize);
     }
@@ -35,8 +41,14 @@ function setupSketchpad (size) {
 function clearSketchpad() {
     sketchpad.innerHTML = '';
     setupSketchpad(size);
-    console.log('clicked');
+}
+
+// need to include a UI color picker
+function pickColor () {
+    colorBtn.addEventListener('oninput', e => {
+        e.target.value = color;
+    })
 }
 
 // initialized sketchpad
-setupSketchpad(16);
+setupSketchpad(size);
