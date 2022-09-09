@@ -15,3 +15,7 @@ const multiplication = function(array) {
 const division = function(array) {
     return array.reduce((total, current) => total / current);
 };
+
+const operate = function(operator, a, b) {
+    return operator([a, b]);
+}
