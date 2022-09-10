@@ -2,66 +2,78 @@ let currentOperator = null;
 let firstOperand = '';
 let secondOperand = '';
 
-const btns = document.querySelectorAll('button');
 const displayValue = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear');
-const addBtn = document.querySelector('.addition');
-const subtractBtn = document.querySelector('.subtraction');
-const multiplyBtn = document.querySelector('.multiplication');
-const divideBtn = document.querySelector('.division');
 const equalBtn = document.querySelector('.equal');
 const operatorBtn = document.querySelectorAll('.operator');
+const numberBtn = document.querySelectorAll('.number')
 
 clearBtn.addEventListener('click', clearDisplay);
-// equalBtn.addEventListener('click', operate);
+equalBtn.addEventListener('click', calculate);
 
-btns.forEach(btn => {
-    btn.addEventListener('click', e => {
-        firstOperand += btn.value;
-        displayValue.innerHTML = firstOperand;
-        if (btn == operatorBtn) {
-            secondOperand += btn.value;
-            displayValue.innerHTML = secondOperand
-        } else if (btn == equalBtn) {
-            operate;
-        }
-    })
-});
+
+numberBtn.forEach((button) => 
+    button.addEventListener('click', () => appendNumber(button.textContent))
+)
+
+operatorBtn.forEach((button) => 
+    button.addEventListener('click', () => setOperator(button.textContent)) 
+)
+
+function appendNumber(number) {
+    displayValue.textContent += number;
+}
+
+function setOperator(operator) {
+    // if (currentOperator !== null) calculate();
+    firstOperand = displayValue.textContent;
+    currentOperator = operator;
+    displayValue.textContent = '';
+}
+
+function calculate() {
+    secondOperand = displayValue.textContent;
+    displayValue.textContent = operate(
+        currentOperator, firstOperand, secondOperand);
+}
 
 function clearDisplay() {
     firstOperand = '';
     secondOperand = '';
     currentOperator = null;
-    displayValue.innerHTML = firstOperand;
+    displayValue.textContent = '';
 }
 
 // OPERATEORS //
 const addition = function(a, b) {
-    a + b;
+    return a + b;
 };
 const subtraction = function(a, b) {
-    a - b;
+    return a - b;
 };
 const multiplication = function(a, b) {
-    a * b;
+    return a * b;
 };
 const division = function(a, b) {
-    a / b;
+    return a / b;
 };
 
 const operate = function(operator, a, b) {
+    a = +a;
+    b = +b;
+
     switch (operator) {
-        case addBtn:
+        case '+':
             return addition(a, b);
-        case subtractBtn:
+        case '-':
             return subtraction(a, b);
-        case multiplyBtn:
-            return subtraction(a, b);
-        case divideBtn:
+        case 'x':
+            return multiplication(a, b);
+        case '÷':
             if (b === 0) {
-                return null
+                return null;
             } else {
-                division([a, b])
+                return division(a, b);
             }
     }
 };
