@@ -34,7 +34,7 @@ function setOperator(operator) {
 function calculate() {
     secondOperand = displayValue.textContent;
     displayValue.textContent = operate(
-        currentOperator, firstOperand, secondOperand);
+        currentOperator, firstOperand, secondOperand).toPrecision(10);
 }
 
 function clearDisplay() {
@@ -71,7 +71,7 @@ const operate = function(operator, a, b) {
             return multiplication(a, b);
         case '÷':
             if (b === 0) {
-                return null;
+                return alert("Cannot divide by 0!");
             } else {
                 return division(a, b);
             }
