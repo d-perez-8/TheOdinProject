@@ -77,9 +77,50 @@ a {
     padding: 10px;
     background-color: whitesmoke;
     border: 1px solid black;
-    box-shadow: 5px 5px black
+    box-shadow: 5px 5px black;
 }
 
 .form-header{
     margin-bottom: 20px;
+}
+
+.signup-form {    
+    width: auto;
+    padding: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+input {
+    width: 200px;
+    padding: 2px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+input:focus {
+    border: 2px green solid;
+}
+
+input:invalid {
+    border: 2px red solid;
+}
+
+button {
+    width: 180px;
+    height: 3em;
+    margin-top: 40px;
+
+    color: white;
+    background-color: darkgreen;
+    border-radius: 5px;
+}
+
+.have-account {
+    font-size: small
 }
