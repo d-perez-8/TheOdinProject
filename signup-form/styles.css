@@ -49,7 +49,6 @@ body {
 
 footer {
     display: flex;
-    justify-content: fl;
 }
 
 a {
@@ -57,46 +56,42 @@ a {
 }
 
 .right {
-    width: 60%;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     background-color: beige;
+    width: 60%;
 }
 
-.header {
-    margin: 100px 20px;
+.header,
+.header-2,
+.form {
+    margin: 10px 30px;
 }
 
 .header-2 {
-    margin-top: -80px;
-    margin-bottom: 50px;
-    margin-left: 20px;
+    margin-bottom: 30px;
 }
 
-.form {
-    margin: 10px;
-    padding: 10px;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    box-shadow: 5px 5px black;
+form {
+    margin: 10px 50px;
+    background-color: white;
+    box-shadow: 10px 10px 0 black;
 }
 
-.form-header{
-    margin-bottom: 20px;
+h4 {
+    margin: 10px
 }
 
-.signup-form {    
-    width: auto;
-    padding: 10px;
-}
+.input-field {
+    margin: 10px 30px;
 
-.form-row {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 }
 
 input {
-    width: 200px;
     padding: 2px;
     margin: 5px 0;
     border-radius: 5px;
