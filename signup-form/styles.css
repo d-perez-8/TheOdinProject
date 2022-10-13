@@ -27,10 +27,11 @@ body {
     position: absolute;
     z-index: 1;
     margin-top: 4rem;
-    background-color: orange;
+    background-color: rgba(235, 149, 50);
     padding: 8px;
     border-radius: 5px;
     font-size: 2rem;
+    text-align: center;
 }
 
 .background {
@@ -76,34 +77,63 @@ a {
 
 form {
     margin: 10px 50px;
+}
+
+.form-field {
     background-color: white;
     box-shadow: 10px 10px 0 black;
+    padding: 10px 20px 20px 20px
 }
 
 h4 {
-    margin: 10px
+    margin: 10px;
 }
 
-.input-field {
+.form-field {
     margin: 10px 30px;
 
     display: flex;
     flex-direction: column;
 }
 
+fieldset {
+    border: none;
+    display: flex;
+    padding: 10px 0px;
+}
+
+.form-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    padding: 0 10px;
+}
+
+label {
+    font-size: 12px;
+    color: black;
+    margin-bottom: -5px;
+}
+
 input {
     padding: 2px;
     margin: 5px 0;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #E5E7EB;
 }
 
 input:focus {
-    border: 2px green solid;
+    border: none;
+    box-shadow: 1px 1px 3px black;
 }
 
 input:invalid {
     border: 2px red solid;
+}
+
+.submit-btn {
+    margin-left: 40px;
 }
 
 button {
@@ -114,8 +144,25 @@ button {
     color: white;
     background-color: darkgreen;
     border-radius: 5px;
+    border: none;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 5px black;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+    color: black;
 }
 
 .have-account {
     font-size: small
+}
+
+.have-account > a {
+    color: green;
+}
+
+a:hover {
+    color: brown;
 }

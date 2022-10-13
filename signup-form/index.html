@@ -25,29 +25,47 @@
             You <em>know</em> you want to.
         </h3>
         <form action="#" method="GET">
-            <h4>Let's do this!</h4>
-
-            <div class="input-field">
-                <label for="first_name">FIRST NAME</label>
-                <input type="text" id="first_name" name="first_name">
-                <label for="last_name">LAST NAME</label>
-                <input type="text" id="last_name" name="last_name">
-                <label for="email">EMAIL</label>
-                <input type="email" id="email" name="email">
-                <label for="phone_number">PHONE NUMBER</label>
-                <input type="tel" id="phone_number" name="phone_number">
-                <label for="password">PASSORD</label>
-                <input type="password" name="password" id="password">
-                <label for="confirm_pass">CONFIRM PASSWORD</label>
-                <input type="password" name="confirm_pass" id="confirm_pass">
+            <div class="form-field">
+                <h4>Let's do this!</h4>
+                <fieldset>
+                    <div class="form-cell">
+                        <label for="first_name">FIRST NAME</label>
+                        <input type="text" id="first_name" name="first_name">
+                    </div>
+                    <div class="form-cell">
+                        <label for="last_name">LAST NAME</label>
+                        <input type="text" id="last_name" name="last_name">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-cell">
+                        <label for="email">EMAIL</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-cell">
+                        <label for="phone_number">PHONE NUMBER</label>
+                        <input type="tel" id="phone_number" name="phone_number">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-cell">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="form-cell">
+                        <label for="confirm_pass">CONFIRM PASSWORD</label>
+                        <input type="password" name="confirm_pass" id="confirm_pass">
+                    </div>
+                </fieldset>
             </div>
-            <button type="submit">Create Account</button>
-            <div class="have-account">
-                Already have an account? <a href="#">Log in</a> 
+            <div class="submit-btn">
+                <button type="submit">Create Account</button>
+                <div class="have-account">
+                    Already have an account? 
+                    <a href="#">Log in</a>
+                </div>
             </div>
-        </form>
-    
-        
+        </form>    
     </div>
 </body>
 </html>
