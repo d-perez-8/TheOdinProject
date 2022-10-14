@@ -101,7 +101,6 @@ fieldset {
 .form-cell {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 40%;
     padding: 0 10px;
 }
@@ -128,9 +127,16 @@ input:invalid {
     border: 2px red solid;
 }
 
-input[type="password"]::after{
-    content: "* Passwords do not match";
+.error:default {
+    border: red 1px solid;
 }
+
+.error::after {
+    content: "* Passwords do not match";
+    font-size: xx-small;
+    color: red;
+}
+
 
 .submit-btn {
     margin-left: 40px;
