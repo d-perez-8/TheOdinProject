@@ -15,11 +15,6 @@ body, html {
   grid-template-rows: 1fr 1fr 5fr 1fr;
 }
 
-/* - The rows and columns stretch wider when making 
-      the browser window bigger
-- The rows and columns stretch taller when making 
-      the browser window smaller */
-
 .container div {
   padding: 15px;
   font-size: 32px;
