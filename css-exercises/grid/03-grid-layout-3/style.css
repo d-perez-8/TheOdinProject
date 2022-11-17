@@ -5,6 +5,11 @@
 
 .container {
   text-align: center;
+
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 1fr 4fr;
+  /* grid-template-rows: ; */
 }
 
 .container div {
@@ -17,6 +22,10 @@
 
 .header {
   background-color: #393f4d;
+
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: 1fr 4fr;
 }
 
 .menu ul,
@@ -24,8 +33,17 @@
   font-size: 16px;
 }
 
+.menu ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+li {
+  list-style: none;
+}
 .sidebar {
   background-color: #FF7755;
+  gap: 50px;
 }
 
 .sidebar .photo {
@@ -46,6 +64,11 @@
 
 .nav {
   background-color: #FF7755;
+}
+
+.nav ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .nav ul li {
