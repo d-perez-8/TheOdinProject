@@ -19,15 +19,20 @@ body {
 
 .container > div {
     padding: 15px;
-    font-size: 20px;
     font-family: Helvetica;
     font-weight: bold;
     color: black;
 }
 
+/* SIDEBAR PROPERITES */
+
 .sidebar {
     background-color: #1DA1F2;
     grid-row: 1 / 3;
+}
+
+.sidebar > ul {
+    display: grid;
 }
 
 .sidebar-title {
@@ -49,11 +54,19 @@ body {
     margin-bottom: 30px;
 }
 
+li:hover {
+    cursor: pointer;
+    background-color: #FFD966;
+}
+
+/* HEADER PROPERTIES */
 
 .header {
     grid-column: 2 / 4;
     justify-items: center;
     align-items: center;
+    box-shadow: 0px 1px 5px 0px grey;
+    z-index: 1;
 
     display: grid;
     grid-template-columns: 1fr 5fr 1fr 1fr 1fr;
@@ -61,10 +74,10 @@ body {
 }
 
 .searchbar {
-    background-color: lightgrey;
+    background-color: #EEEEEE;
     border: none;
     border-radius: 15px;
-    width: 100%;
+    width: 90%;
     height: 25px;
 }
 
@@ -73,57 +86,73 @@ body {
     width: 20px;
 }
 
-.header:nth-child(7) {
-    justify-items: start;
+.profile-name {
+    font-size: smaller;
+}
+
+.header > .welcome-message {
+    justify-self: start;
+    font-size: smaller;
+}
+
+.welcome-message > div {
+    font-size: large;
 }
 
 button {
-    font-size: 16px;
+    font-size: 0.8em;
     color: white;
     background-color: #1DA1F2;
-    width: 100px;
-    height: 50px;
+    width: 80%;
+    height: 25px;
 
     border-radius: 40px;
+    border: none;
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #FFD966;
     cursor: pointer;
 }
 
-.main-content {
-    background-color: lightgrey;
-    grid-column: 2 / 4;
+/* MAIN CONTENT PROPERTIES */
 
+.main-content {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 1fr;
 }
 
-.your-projects {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
+.main-content-left, .main-content-right {
+    background-color: #EEEEEE;
+}
 
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr
+.your-projects, h4 {
+    margin: 8px 0px;
 }
 
 .cards {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: repeat(3, 1fr);
+
+    margin-top: 5px;
+}
+
+.card-title {
     background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border-left: 5px solid #FFD966;
 }
 
-.announcments {
+.card-content {
+    font-weight: 400;
+    color: grey
+}
+
+.announcments, .trending {
+    background-color: white;
+    height: 40%;
     display: grid;
-    grid-template-rows: 1 / 3;
-}
-
-.trending {
-    display: grid;
-    grid-template-rows: 1 / 4;
-}
-
-.trending > div {
-    justify-items: center
 }
