@@ -117,10 +117,7 @@ button:hover {
 
 /* MAIN CONTENT PROPERTIES */
 
-.main-content {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-}
+
 
 .main-content-left, .main-content-right {
     background-color: #EEEEEE;
