@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+}
+
+.left {
+    height: 100vh;
+    width: 40%;
+    overflow: hidden;
+}
+
+.left-header, .left-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    position: absolute;
+    z-index: 1;
+    margin-top: 4rem;
+    background-color: rgba(235, 149, 50);
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.background {
+    width: auto;
+    height: 100vh;
+    position: relative;
+    right: 50%;
+    object-fit: cover;
+}
+
+footer {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    color: white;
+}
+
+a {
+    color: wheat
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: beige;
+    width: 60%;
+}
+
+.header,
+.header-2,
+.form {
+    margin: 10px 30px;
+}
+
+.header-2 {
+    margin-bottom: 30px;
+}
+
+form {
+    margin: 10px 50px;
+}
+
+.form-field {
+    background-color: white;
+    box-shadow: 10px 10px 0 black;
+    padding: 10px 20px 20px 20px
+}
+
+h4 {
+    margin: 10px;
+}
+
+.form-field {
+    margin: 10px 30px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: none;
+    display: flex;
+    padding: 10px 0px;
+}
+
+.form-cell {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 0 10px;
+}
+
+label {
+    font-size: 12px;
+    color: black;
+    margin-bottom: -5px;
+}
+
+input {
+    padding: 2px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #E5E7EB;
+}
+
+input:focus {
+    border: none;
+    box-shadow: 1px 1px 3px black;
+}
+
+input:invalid {
+    border: 2px red solid;
+}
+
+.error:default {
+    border: red 1px solid;
+}
+
+.error::after {
+    content: "* Passwords do not match";
+    font-size: xx-small;
+    color: red;
+}
+
+
+.submit-btn {
+    margin-left: 40px;
+}
+
+button {
+    width: 180px;
+    height: 3em;
+    margin-top: 40px;
+
+    color: white;
+    background-color: darkgreen;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 5px black;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+    color: black;
+}
+
+.have-account {
+    font-size: small
+}
+
+.have-account > a {
+    color: green;
+}
+
+a:hover {
+    color: brown;
+}
