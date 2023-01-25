@@ -1,0 +1,27 @@
+html, body, * {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+#gameboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 16em;
+    height: 16em;
+    margin: auto;
+    /* border: 1px green dashed; */
+}
+
+.gameTile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 5em;
+    border: 1px red solid;
+}
