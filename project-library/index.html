@@ -15,7 +15,7 @@
     </nav>
     <main>
         <section class="library">
-            <div class="book">
+            <!-- <div class="book">
                 <p>The Martian</p>
                 <p>Andy Weir</p>
                 <p>320</p>
@@ -23,29 +23,39 @@
                     <button class="read-book">Read</button>
                     <button class="remove-book">Remove</button>
                 </div>
-            </div>
-            <div class="book">
-                <p>The Martian</p>
-                <p>Andy Weir</p>
-                <p>320</p>
-                <div>
-                    <button class="read-book">Read</button>
-                    <button class="remove-book">Remove</button>
-                </div>
-            </div>
-            <div class="book">
-                <p>The Martian</p>
-                <p>Andy Weir</p>
-                <p>320</p>
-                <div>
-                    <button class="read-book">Read</button>
-                    <button class="remove-book">Remove</button>
-                </div>
-            </div>
+            </div> -->
         </section>
-    </main>
-    <div class="addBook">+</div>
+        <!-- A button to open the popup form -->
+        <button class="open-button">+</button>
 
-    <script src="js/script.js"></script>
+        <!-- The form -->
+        <div class="form-popup" id="myForm">
+            <form class="form-container">
+                <h1>Enter Book Info</h1>
+
+                <label for="title"><p>Title</p></label>
+                <input type="text" id="title" placeholder="Enter Title" name="title" required>
+
+                <label for="author"><p>Author</p></label>
+                <input type="text" id="author" placeholder="Enter Author's Name" name="author" required>
+
+                <label for="pages"><p>Number of Pages</p></label>
+                <input type="text" id="pages" placeholder="Enter Page Count" name="pages" required>
+
+                <div class="is-read">
+                    <label for="is-read">Have you read it?</label>
+                    <input class="checkbox" type="checkbox" id="read" />
+                </div>
+
+                <button type="submit" class="btn btn-light-green">Add Book to Your Library</button>
+                <button type="button" class="btn cancel">Cancel</button>
+            </form>
+        </div>
+    </main>
+    
+
+    <script src="js/script.js">
+        console.log("Hello!")
+    </script>
 </body>
 </html>
