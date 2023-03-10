@@ -1,0 +1,61 @@
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+  }
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+body {
+  background-color: #feecd2;
+}
+
+nav {
+  background-color: #deb887;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+  nav h1 {
+    margin-left: 1.5rem;
+  }
+
+  nav button {
+    width: 100px;
+    height: 35px;
+    margin-right: 1.5rem;
+  }
+
+  nav button:hover {
+    cursor: pointer;
+  }
+
+.addBook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: white;
+  background-color: #573912;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+
+  font-size: 35px;
+}
+
+  .addBook:hover {
+    cursor: pointer;
+    color: black;
+    background-color: #deb887;
+  }
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
