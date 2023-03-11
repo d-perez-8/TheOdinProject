@@ -26,6 +26,8 @@ class Library {
     }
 }
 
+const library = new Library()
+
 class Book {
     constructor(title, author, pages, read) {
         this.title = title
@@ -37,12 +39,13 @@ class Book {
 
 
 // DOM Elements
-const library = document.getElementById('library')
+const libraryGrid = document.querySelector('.library')
+const addBookForm = document.getElementById('addBookForm')
+const addBookBtn = document.getElementById('addBookBtn')
 document.querySelector(".open-button").addEventListener('click', openForm)
 document.querySelector(".cancel").addEventListener('click', closeForm)
 
-
-
+// form pop up
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }  
@@ -50,42 +53,51 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
-
 // Updates the library with new entry
-function updateLibraryGrid() {
+const updateLibraryGrid = () => {
     resetLibraryGrid()
     for (let book of library.books) {
         createBookCard(book)
     }
 }
 
-function resetLibraryGrid() {
-    library.innerHTML = ''
+const resetLibraryGrid = () => {
+    if (libraryGrid.innerHTML) {
+        libraryGrid.innerHTML = ''
+    }
 }
 
 function createBookCard(book) {
     // design of the book card
-    const bookCard = document.createElement('div').classList.add('book-card')
-    const buttonGroup = document.createElement('div').classList.add('button-group')
-    const readBtn = document.createElement('button').classList.add('btn')
-    const removeBtn = document.createElement('button').classList.add('btn')
+    const bookCard = document.createElement('div')
+    const buttonGroup = document.createElement('div')
+    const readBtn = document.createElement('button')
+    const removeBtn = document.createElement('button')
+    const title = document.createElement('p')
+    const author = document.createElement('p')
+    const pages = document.createElement('p')
+
+    bookCard.classList.add('book-card')
+    buttonGroup.classList.add('button-group')
+    readBtn.classList.add('btn')
+    removeBtn.classList.add('btn')
+
     readBtn.addEventListener('click', toggleRead)
     removeBtn.addEventListener('click', removeBook)
 
     // contents of the book card
-    const title = document.createElement('p').innerHTML = `${book.title}`
-    const author = doucment.createElement('p').innerHTML = `${book.author}`
-    const pages = doucment.createElement('p').innerHTML = `${book.pages}`
+    title.textContent = `${book.title}`
+    author.textContent = `${book.author}`
+    pages.textContent = `${book.pages}`
     removeBtn.textContent = 'Remove'
 
     // changes read section based on text content of the read button
     if (book.read) {
-        const isRead = document.createElement('button')
-        isRead.textContent = 'Read'
-        isRead.classList.add('btn-light-green')
+        readBtn.textContent = 'Read'
+        readBtn.classList.add('btn-light-green')
     } else {
-        isRead.textContent = 'Not Read'
-        isRead.classList.add('btn-light-red')
+        readBtn.textContent = 'Not Read'
+        readBtn.classList.add('btn-light-red')
     }
 
     // cards that will be shown on the DOM
@@ -95,7 +107,7 @@ function createBookCard(book) {
     buttonGroup.appendChild(readBtn)
     buttonGroup.appendChild(removeBtn)
     bookCard.appendChild(buttonGroup)
-    library.appendChild(bookCard)
+    libraryGrid.appendChild(bookCard)
 }
 
 function getBookFromInput() {
@@ -109,15 +121,26 @@ function getBookFromInput() {
 
 const addBook = (e) => {
     e.preventDefault()
+    library.addBook(getBookFromInput())
+    saveLocal()
+    updateLibraryGrid()
     closeForm()
 }
 
+const removeBook = (e) => {
+    const title = e.target.parentNode.parentNode.firstChild.innerHTML
+        .replaceAll('"', '')
+
+    library.removeBook(title)
+    saveLocal()
+    updateBooksGrid()
+}
+
 const toggleRead = (e) => {
-    const title = e.target.parentNode.firstChild.innerHTML.replaceAll(
-        '"',
-        ''
-    )
-    library.getBook(title).read = !book.read
+    const title = e.target.parentNode.parentNode.firstChild.innerHTML
+        .replaceAll('"', '')
+    const book = library.getBook(title)
+    book.read = !book.read
     saveLocal()
     updateLibraryGrid()
 }
@@ -135,3 +158,10 @@ const restoreLocal = () => {
         library.books = []
     }
 }
+
+const JSONToBook = (book) => {
+    return new Book(book.title, book.author, book.pages, book.read)
+}
+
+document.getElementById('addBookForm').addEventListener('submit', addBook)
+restoreLocal()
