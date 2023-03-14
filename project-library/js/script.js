@@ -3,7 +3,7 @@ class Library {
         this.books = []
     }
 
-    // checks to see if there's an identitcal book in the library
+    // checks to see if there's an identical book in the library
     addBook(newBook) {
         if (!this.isInLibrary(newBook)) {
             this.books.push(newBook)
@@ -62,12 +62,10 @@ const updateLibraryGrid = () => {
 }
 
 const resetLibraryGrid = () => {
-    if (libraryGrid.innerHTML) {
-        libraryGrid.innerHTML = ''
-    }
+    libraryGrid.innerHTML = ''
 }
 
-function createBookCard(book) {
+const createBookCard = (book) => {
     // design of the book card
     const bookCard = document.createElement('div')
     const buttonGroup = document.createElement('div')
@@ -86,9 +84,9 @@ function createBookCard(book) {
     removeBtn.addEventListener('click', removeBook)
 
     // contents of the book card
-    title.textContent = `${book.title}`
-    author.textContent = `${book.author}`
-    pages.textContent = `${book.pages}`
+    title.textContent = book.title
+    author.textContent = book.author
+    pages.textContent = book.pages
     removeBtn.textContent = 'Remove'
 
     // changes read section based on text content of the read button
@@ -128,8 +126,7 @@ const addBook = (e) => {
 }
 
 const removeBook = (e) => {
-    const title = e.target.parentNode.parentNode.firstChild.innerHTML
-        .replaceAll('"', '')
+    const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('"', '')
 
     library.removeBook(title)
     saveLocal()
@@ -137,8 +134,7 @@ const removeBook = (e) => {
 }
 
 const toggleRead = (e) => {
-    const title = e.target.parentNode.parentNode.firstChild.innerHTML
-        .replaceAll('"', '')
+    const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('"', '')
     const book = library.getBook(title)
     book.read = !book.read
     saveLocal()
@@ -163,5 +159,16 @@ const JSONToBook = (book) => {
     return new Book(book.title, book.author, book.pages, book.read)
 }
 
+// gets party started
 document.getElementById('addBookForm').addEventListener('submit', addBook)
-restoreLocal()
+
+// Loads the saved entries
+function loadLocalStorage() {
+    library.books = JSON.parse(localStorage.getItem('library'))
+
+    for (let book of library.books) {
+        createBookCard(book)
+    }
+}
+
+loadLocalStorage()
