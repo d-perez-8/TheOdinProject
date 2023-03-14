@@ -52,6 +52,8 @@ main {
   align-items: center;
 }
 
+/* TODO: italize book titles */
+
 .open-button {
   display: flex;
   justify-content: center;
@@ -61,7 +63,7 @@ main {
   height: 100px;
   color: white;
   background-color: #573912;
-  position: absolute;
+  position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
 
