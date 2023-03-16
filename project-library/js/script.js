@@ -50,6 +50,7 @@ function openForm() {
     document.getElementById("myForm").style.display = "block";
 }  
 function closeForm() {
+    addBookForm.reset()
     document.getElementById("myForm").style.display = "none";
 }
 
