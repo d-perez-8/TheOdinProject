@@ -40,7 +40,7 @@ main {
   justify-items: center;
 }
 
-/* Stlye of the individual books */
+/* Style of the individual book card */
 .book-card {
   height: 250px;
   aspect-ratio: 6 / 9;
@@ -50,6 +50,28 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-light-green {
+  background-color: #04AA6D;
+  margin-bottom: 10%;
+  border-radius: 5px;
+}
+
+.btn-light-red {
+  background-color: red;
+  margin-bottom: 10%;
+  border-radius: 5px;
 }
 
 /* TODO: italize book titles */
@@ -113,7 +135,6 @@ main {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
-  border: none;
   cursor: pointer;
   width: 100%;
   margin-bottom:10px;

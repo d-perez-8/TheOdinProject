@@ -17,7 +17,7 @@ class Library {
 
     // retrieves the book by using its title
     getBook(title) {
-        return this.book.find((book) => book.title === title)
+        return this.books.find((book) => book.title === title)
     }
 
     // checks to see if book is already in the library
@@ -113,7 +113,7 @@ function getBookFromInput() {
     const title = document.getElementById('title').value
     const author = document.getElementById('author').value
     const pages = document.getElementById('pages').value
-    const read = document.getElementById('read').value
+    const read = document.getElementById('is-read').checked
     return new Book(title, author, pages, read)
 }
 
@@ -130,7 +130,7 @@ const removeBook = (e) => {
 
     library.removeBook(title)
     saveLocal()
-    updateBooksGrid()
+    updateLibraryGrid()
 }
 
 const toggleRead = (e) => {
