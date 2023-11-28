@@ -25,3 +25,10 @@ h1 {
     height: 5em;
     border: 1px red solid;
 }
+
+.resetBtn {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    margin: auto;
+}
