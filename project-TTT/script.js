@@ -9,19 +9,20 @@ const TicTacToe = (() => {
 
     let squares = document.querySelectorAll(".gameTile");
     let resetBtn = document.querySelector(".resetBtn");
-
+    let winner = document.querySelector(".winner");
 
     const makeMove = (() => {
         squares.forEach((square, index) => {
             square.addEventListener('click', () => {
-                if (square[index]) {
-                    console.log("Invalid move. Position is taken.")
-                } else {
+                if (gameActive && !gameboardArray[index]) {
                     square.innerHTML = currentPlayer;
-                    gameboardArray[index] = currentPlayer;
-                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                    console.log(gameboardArray);
+                    gameboardArray[index] = currentPlayer
                     checkWinner();
+                    if (gameActive) {
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+                    }
+                } else {
+                    console.log("Invalid move.")
                 }
             })
         })
@@ -41,20 +42,21 @@ const TicTacToe = (() => {
                 gameboardArray[a] === gameboardArray[b] &&
                 gameboardArray[a] === gameboardArray[c]
             ) {
-                console.log(`Player ${gameboardArray[a]} Wins!`);
+                winner.innerHTML = `Player ${gameboardArray[a]} Wins!!!`;
                 gameActive = false;
                 break;
             }
         }
     };
 
-
-    const resetBoard = () => {
-        gameboardArray = ['', '', '', '', '', '', '', '', ''];
-        squares.forEach((square) => {
-            square.innerHTML = ""
+    const resetBoard = (() => {
+        resetBtn.addEventListener('click', () => {
+            gameboardArray = ['', '', '', '', '', '', '', '', ''];
+            squares.forEach((square) => {
+                square.innerHTML = ""
+            });
+            winner.innerHTML = "";
         })
-    }
-    resetBtn.addEventListener('click', resetBoard)
+    })();
 
 })();

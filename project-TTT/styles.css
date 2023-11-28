@@ -5,6 +5,7 @@ html, body, * {
 
 h1 {
     text-align: center;
+    margin-top: 2rem;
 }
 
 #gameboard {
@@ -14,7 +15,6 @@ h1 {
     width: 16em;
     height: 16em;
     margin: auto;
-    /* border: 1px green dashed; */
 }
 
 .gameTile {
@@ -26,9 +26,31 @@ h1 {
     border: 1px red solid;
 }
 
+.gameTile:hover {
+    cursor: pointer;
+}
+
+.winner {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+    font-size: x-large;
+}
+
 .resetBtn {
     display: flex;
     justify-content: center;
-    width: 100px;
-    margin: auto;
+    align-items: center;
+    width: 130px;
+    height: 30px;
+    margin: 1rem auto;
+    border: 1px red solid;
+    background-color: lightcoral;
+    border-radius: 5px;
+}
+
+.resetBtn:hover {
+    background-color: white;
+    font: white;
+    cursor: pointer;
 }
