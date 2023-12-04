@@ -11,18 +11,35 @@ const TicTacToe = (() => {
     let resetBtn = document.querySelector(".resetBtn");
     let winner = document.querySelector(".winner");
 
+    document.querySelector(".playerNameForm").addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const player1 = document.querySelector('#player1').value;
+        const player2 = document.querySelector('#player2').value;
+    })
+
+    let currentPlayerName = player1.value;
+
     const makeMove = (() => {
         squares.forEach((square, index) => {
             square.addEventListener('click', () => {
-                if (gameActive && !gameboardArray[index]) {
+                if (
+                    gameActive && 
+                    !gameboardArray[index] && 
+                    player1.value !== "" &&
+                    player2.value !== ""
+                ) {
                     square.innerHTML = currentPlayer;
-                    gameboardArray[index] = currentPlayer
+                    gameboardArray[index] = currentPlayer;
                     checkWinner();
                     if (gameActive) {
-                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                        currentPlayerName = currentPlayerName === player1.value ? player2.value : player1.value;
+                        winner.innerHTML = `It is ${currentPlayerName} turn.`;
+
                     }
                 } else {
-                    console.log("Invalid move.")
+                    console.log("Invalid move.");
                 }
             })
         })
@@ -42,7 +59,7 @@ const TicTacToe = (() => {
                 gameboardArray[a] === gameboardArray[b] &&
                 gameboardArray[a] === gameboardArray[c]
             ) {
-                winner.innerHTML = `Player ${gameboardArray[a]} Wins!!!`;
+                winner.innerHTML = `${currentPlayerName} Wins!!!`;
                 gameActive = false;
                 break;
             }
@@ -56,7 +73,7 @@ const TicTacToe = (() => {
                 square.innerHTML = ""
             });
             winner.innerHTML = "";
+            gameActive = true;
         })
     })();
-
 })();
