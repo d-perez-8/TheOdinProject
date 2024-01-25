@@ -1,6 +1,10 @@
-import { toggleTodoModal, addTodoItem, closeTodoModal } from './modal.js';
-
+import { toggleTodoModal, toggleProjectModal, closeModal } from './modules/modal.js';
+import Todo from './modules/addTodo.js';
+import Project from './modules/addProject.js';
 // Add todo toggle function
 toggleTodoModal();
-addTodoItem();
-closeTodoModal();
+toggleProjectModal();
+const project = new Project('projectForm');
+const todo = new Todo('todoForm');
+closeModal();
+console.log(project)

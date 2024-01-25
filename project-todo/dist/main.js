@@ -16,17 +16,37 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal.js */ \"./src/modal.js\");\n\n\n// Add todo toggle function\n(0,_modal_js__WEBPACK_IMPORTED_MODULE_0__.toggleTodoModal)();\n(0,_modal_js__WEBPACK_IMPORTED_MODULE_0__.addTodoItem)();\n(0,_modal_js__WEBPACK_IMPORTED_MODULE_0__.closeTodoModal)();\n\n//# sourceURL=webpack://project-todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_addTodo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/addTodo.js */ \"./src/modules/addTodo.js\");\n/* harmony import */ var _modules_addProject_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/addProject.js */ \"./src/modules/addProject.js\");\n\n\n\n// Add todo toggle function\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__.toggleTodoModal)();\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__.toggleProjectModal)();\nconst project = new _modules_addProject_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('projectForm');\nconst todo = new _modules_addTodo_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('todoForm');\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__.closeModal)();\nconsole.log(project)\n\n//# sourceURL=webpack://project-todo/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/modal.js":
-/*!**********************!*\
-  !*** ./src/modal.js ***!
-  \**********************/
+/***/ "./src/modules/addProject.js":
+/*!***********************************!*\
+  !*** ./src/modules/addProject.js ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addTodoItem: () => (/* binding */ addTodoItem),\n/* harmony export */   closeTodoModal: () => (/* binding */ closeTodoModal),\n/* harmony export */   toggleTodoModal: () => (/* binding */ toggleTodoModal)\n/* harmony export */ });\nconst toggleButton = document.querySelector(\".addTodo\");\nconst todoModal = document.querySelector(\".addTodoModal\");\n\n// Toggle Modal\nconst toggleTodoModal = () => {\n    console.log('Toggle Button Clicked')\n    toggleButton.addEventListener('click', () => {\n        todoModal.classList.toggle('hidden');\n    });\n}\n\n// Close to-do modal\nconst closeTodoModal = () => {\n    const cancelButton = document.querySelector(\".cancel\");\n    cancelButton.addEventListener('click', () => {\n        todoModal.classList.toggle('hidden');\n    });\n}\n\n// Submit Modal Form\nconst addTodoItem = () => {\n    const add = document.querySelector(\".add\");\n    add.addEventListener('click', () => {\n        todoModal.classList.toggle('hidden');\n    })\n}\n\n\n//# sourceURL=webpack://project-todo/./src/modal.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Project)\n/* harmony export */ });\n// Submit Project Modal Form\nclass Project {\n    constructor(projectForm) {\n        this.formElement = document.getElementById(projectForm);\n        this.title = document.getElementById('title');\n        this.addEventListener();\n    }\n\n    addEventListener() {\n        this.formElement.addEventListener('submit', this.handleSubmit.bind(this));\n    }\n\n    handleSubmit(event) {\n        event.preventDefault();\n\n        const projectTitle = this.title.value;\n        \n        this.clearInputFields();\n\n        console.log(projectTitle);\n    }\n\n    clearInputFields() {\n        this.title.value = '';\n    }\n}\n\n//# sourceURL=webpack://project-todo/./src/modules/addProject.js?");
+
+/***/ }),
+
+/***/ "./src/modules/addTodo.js":
+/*!********************************!*\
+  !*** ./src/modules/addTodo.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Todo)\n/* harmony export */ });\n// Submit Todo Modal Form\nclass Todo {\n    constructor(todoForm) {\n        this.formElement = document.getElementById(todoForm);\n        this.title = document.getElementById('title');\n        this.description = document.getElementById('description');\n        this.dueDate = document.getElementById('dueDate');\n        this.addEventListener();\n    }\n\n    addEventListener() {\n        this.formElement.addEventListener('submit', this.handleSubmit.bind(this));\n    }\n    \n    handleSubmit(event) {\n        event.preventDefault();\n\n        const todoTitle = this.title.value;\n        const todoDescription = this.description.value;\n        const todoDueDate = this.dueDate.value;\n\n        this.clearInputFields();        \n\n        //How do we send this data to the DOM\n        console.log(todoTitle, todoDescription, todoDueDate);\n    }\n\n    clearInputFields() {\n        this.title.value = '';\n        this.description.value = '';\n        this.dueDate.value = '';\n    }\n}\n\n//# sourceURL=webpack://project-todo/./src/modules/addTodo.js?");
+
+/***/ }),
+
+/***/ "./src/modules/modal.js":
+/*!******************************!*\
+  !*** ./src/modules/modal.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   closeModal: () => (/* binding */ closeModal),\n/* harmony export */   toggleProjectModal: () => (/* binding */ toggleProjectModal),\n/* harmony export */   toggleTodoModal: () => (/* binding */ toggleTodoModal)\n/* harmony export */ });\nconst toggleAddTodoButton = document.querySelector(\".addTodo\");\nconst todoModal = document.querySelector(\".addTodoModal\");\nconst toggleProjectButton = document.querySelector(\".addProject\")\nconst projectModal = document.querySelector(\".addProjectModal\");\n\n// Toggle Todo Modal\nconst toggleTodoModal = () => {\n    toggleAddTodoButton.addEventListener('click', () => {\n        todoModal.classList.toggle('hidden');\n        projectModal.classList.add('hidden');\n    });\n}\n\n// Toggle Project Modal\nconst toggleProjectModal = () => {\n    toggleProjectButton.addEventListener('click', () => {\n        projectModal.classList.toggle('hidden');\n        todoModal.classList.add('hidden');\n    });\n}\n\n// Close modal\nconst closeModal = () => {\n    const cancelButton = document.querySelectorAll(\".cancel\");\n    cancelButton.forEach(btn => btn.addEventListener('click', () => {\n        todoModal.classList.add('hidden');\n        projectModal.classList.add('hidden');\n    }));\n}\n\n//# sourceURL=webpack://project-todo/./src/modules/modal.js?");
 
 /***/ })
 
