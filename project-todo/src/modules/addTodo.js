@@ -1,33 +1,67 @@
-// Submit Todo Modal Form
-export default class Todo {
-    constructor(todoForm) {
-        this.formElement = document.getElementById(todoForm);
-        this.title = document.getElementById('title');
-        this.description = document.getElementById('description');
-        this.dueDate = document.getElementById('dueDate');
-        this.addEventListener();
+import { createDOMElement } from './createDomElement';
+
+class Todo {
+    constructor(title, description, dueDate) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
     }
 
-    addEventListener() {
-        this.formElement.addEventListener('submit', this.handleSubmit.bind(this));
+    render() {
+        const todo = createDOMElement('li', '', { class: 'todo' });
+        const title = createDOMElement('span', this.title, { class: 'todoTitle' });
+        const description = createDOMElement('span', this.description, { class: 'todoDescription' });
+        const dueDate = createDOMElement('span', this.dueDate, { class: 'dueDate' });
+        const editTodo = createDOMElement('button', 'Edit', { class: 'editTodo' });
+        const removeTodo = createDOMElement('button', 'Remove', { class: 'removeTodo' });
+        
+        todo.appendChild(title);
+        todo.appendChild(description);
+        todo.appendChild(dueDate);
+        todo.appendChild(editTodo);
+        todo.appendChild(removeTodo);
+
+        return todo;
     }
-    
+}
+
+export default class TodoFormHandler {
+    constructor(formId, todosContainer) {
+        this.form = document.getElementById(formId);
+        this.todosContainer = document.querySelector(todosContainer);
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
-        const todoTitle = this.title.value;
-        const todoDescription = this.description.value;
-        const todoDueDate = this.dueDate.value;
+        const todoTitle = this.getElementValue('#title');
+        const todoDescription = this.getElementValue('#description');
+        const todoDueDate = this.getElementValue('#dueDate');
 
-        this.clearInputFields();        
+        const todo = new Todo(todoTitle, todoDescription, todoDueDate)
+        const todoElement = todo.render();
 
-        //How do we send this data to the DOM
-        console.log(todoTitle, todoDescription, todoDueDate);
+        this.todosContainer.appendChild(todoElement);
+
+        this.clearInputFields();
     }
 
     clearInputFields() {
-        this.title.value = '';
-        this.description.value = '';
-        this.dueDate.value = '';
+        this.setElementValue('#title', '');
+        this.setElementValue('#description', '');
+        this.setElementValue('#dueDate', '');
+    }
+
+    getElementValue(selector) {
+        return this.form.querySelector(selector).value;
+    }
+
+    setElementValue(selector, value) {
+        this.form.querySelector(selector).value = value;
     }
 }
