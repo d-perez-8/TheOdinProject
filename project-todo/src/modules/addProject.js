@@ -17,6 +17,7 @@ export default class Project {
         
         this.clearInputFields();
 
+        // TODO: send data to DOM
         console.log(projectTitle);
     }
 
