@@ -1,27 +1,59 @@
+import { createDOMElement } from "./createDomElement";
+
 // Submit Project Modal Form
-export default class Project {
-    constructor(projectForm) {
-        this.formElement = document.getElementById(projectForm);
-        this.title = document.getElementById('title');
+class Project {
+    constructor(title) {
+        this.title = title;
+    }
+
+    render() {
+        const project = createDOMElement('li', '', { class: 'project' });
+        const title = createDOMElement('span', this.title, { class: 'projectTitle' });
+        const editProject = createDOMElement('button', 'E', { class: 'editProject' });
+        const deleteProject = createDOMElement('button', "D", { class: 'deleteProject' });
+
+        
+        project.appendChild(title);
+        project.appendChild(editProject);
+        project.appendChild(deleteProject);
+
+        return project;
+    }
+}
+
+export default class ProjectFormHandle {
+    constructor(projectFormId, projectsContainer) {
+        this.form = document.getElementById(projectFormId);
+        this.projectsContainer = document.querySelector(projectsContainer);
         this.addEventListener();
     }
 
     addEventListener() {
-        this.formElement.addEventListener('submit', this.handleSubmit.bind(this));
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
-        const projectTitle = this.title.value;
+        const projectTitle = this.getElementValue('#project-title');
         
-        this.clearInputFields();
+        const project = new Project(projectTitle);
+        const projectElement = project.render();
 
-        // TODO: send data to DOM
-        console.log(projectTitle);
+        this.projectsContainer.appendChild(projectElement);
+
+        this.clearInputFields();
     }
 
     clearInputFields() {
-        this.title.value = '';
+        this.setElementValue('#project-title', '');
+    }
+
+    getElementValue(selector) {
+        return this.form.querySelector(selector).value;
+    }
+
+    setElementValue(selector, value) {
+        this.form.querySelector(selector).value = value;
     }
 }
