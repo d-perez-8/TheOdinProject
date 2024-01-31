@@ -1,4 +1,5 @@
 import { createDOMElement } from './createDomElement';
+import { editTodoModal } from './modal';
 import { deleteItem } from './deleteItem';
 
 class Todo {
@@ -50,6 +51,7 @@ export default class TodoFormHandler {
         this.todosContainer.appendChild(todoElement);
 
         // Reinstantiate function for each new project
+        editTodoModal();
         deleteItem();
 
         this.clearInputFields();

@@ -1,4 +1,4 @@
-import { toggleTodoModal, toggleProjectModal, closeModal } from './modules/modal.js';
+import { toggleTodoModal, toggleProjectModal, closeModal, editTodo } from './modules/modal.js';
 import TodoFormHandler from './modules/addTodo.js';
 import Project from './modules/addProject.js';
 import { deleteItem } from './modules/deleteItem.js';
@@ -8,6 +8,7 @@ toggleTodoModal();
 toggleProjectModal();
 closeModal();
 deleteItem();
+editTodo();
 
 
 // Classes for projects and todos

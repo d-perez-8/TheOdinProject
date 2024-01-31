@@ -103,7 +103,8 @@ header {
 }
 
 .addTodoModal,
-.addProjectModal {
+.addProjectModal,
+.editTodoModal {
     z-index: 10;
     background-color: bisque;
     position: absolute;

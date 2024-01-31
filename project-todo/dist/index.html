@@ -30,6 +30,20 @@
         </form>
         <button type="button" class="cancel">Cancel</button>
     </div>
+    <div class="editTodoModal hidden">
+        <h2>Edit Todo</h2>
+        <form id="editTodo">
+            <label for="editTitle">Title</label>
+            <input type="text" id="editTitle">
+            <label for="editDescription">Description</label>
+            <input type="text" id="editDescription">
+            <label for="editDueDate">Due Date</label>
+            <input type="date" id="editDueDate">
+            <button type="submit" class="edit">Save</button>
+        </form>
+        <button type="button" class="cancel">Cancel</button>
+
+    </div>
     <div class="content">
         <nav>
             <h1>Todo App</h1>
@@ -47,14 +61,14 @@
                 <li class="todo">
                     <span class="todoTitle">Todo</span>
                     <span class="todoDescription">Description</span>
-                    <span class="dueDate">Due Date</span>
+                    <span class="dueDate">2312-12-31</span>
                     <button class="editTodo">Edit</button>
                     <button class="removeTodo deleteBtn">Remove</button>
                 </li>
                 <li class="todo">
                     <span class="todoTitle">Todo 2</span>
                     <span class="todoDescription">Description</span>
-                    <span class="dueDate">Due Date</span>
+                    <span class="dueDate">2312-12-31</span>
                     <button class="editTodo">Edit</button>
                     <button class="removeTodo deleteBtn">Remove</button>
                 </li>
