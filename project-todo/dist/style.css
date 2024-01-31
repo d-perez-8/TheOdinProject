@@ -17,6 +17,16 @@ html {
     font-size: 90%;
 }
 
+li {
+    list-style: none;
+}
+
+.btn {
+    height: 2rem;
+    width: 6rem;
+    margin-right: 2rem;
+}
+
 .content {
     display: grid;
     grid-template-columns: 1fr 7fr;
@@ -46,6 +56,11 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Projects Sidebat */
+.projectTitle {
+    flex-grow: 1;
+}
+
 
 
 /* Main Content Layout */
@@ -61,13 +76,6 @@ header {
     flex-grow: 1;
 }
 
-.addTodo,
-.addProject {
-    height: 2rem;
-    width: 6rem;
-    margin-right: 2rem;
-}
-
 /* Todo list */
 
 .todo {
@@ -79,6 +87,13 @@ header {
     list-style: none;
     height: 3rem;
     margin: 2rem;
+}
+
+.project {
+    display: flex;
+    flex-grow: 1;
+    gap: 5px;
+    margin-right: 5px;
 }
 
 /* Todo Modal */

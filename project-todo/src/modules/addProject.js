@@ -1,4 +1,6 @@
 import { createDOMElement } from "./createDomElement";
+import { deleteItem } from './deleteItem';
+
 
 // Submit Project Modal Form
 class Project {
@@ -10,15 +12,15 @@ class Project {
         const project = createDOMElement('li', '', { class: 'project' });
         const title = createDOMElement('span', this.title, { class: 'projectTitle' });
         const editProject = createDOMElement('button', 'E', { class: 'editProject' });
-        const deleteProject = createDOMElement('button', "D", { class: 'deleteProject' });
+        const deleteProject = createDOMElement('button', 'D', { class: 'deleteProject deleteBtn' });
 
-        
         project.appendChild(title);
         project.appendChild(editProject);
         project.appendChild(deleteProject);
 
         return project;
     }
+    
 }
 
 export default class ProjectFormHandle {
@@ -41,6 +43,9 @@ export default class ProjectFormHandle {
         const projectElement = project.render();
 
         this.projectsContainer.appendChild(projectElement);
+
+        // Reinstantiate function for each new project
+        deleteItem();
 
         this.clearInputFields();
     }

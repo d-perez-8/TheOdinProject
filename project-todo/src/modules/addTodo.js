@@ -1,4 +1,5 @@
 import { createDOMElement } from './createDomElement';
+import { deleteItem } from './deleteItem';
 
 class Todo {
     constructor(title, description, dueDate) {
@@ -13,7 +14,7 @@ class Todo {
         const description = createDOMElement('span', this.description, { class: 'todoDescription' });
         const dueDate = createDOMElement('span', this.dueDate, { class: 'dueDate' });
         const editTodo = createDOMElement('button', 'Edit', { class: 'editTodo' });
-        const removeTodo = createDOMElement('button', 'Remove', { class: 'removeTodo' });
+        const removeTodo = createDOMElement('button', 'Remove', { class: 'removeTodo deleteBtn' });
         
         todo.appendChild(title);
         todo.appendChild(description);
@@ -47,6 +48,9 @@ export default class TodoFormHandler {
         const todoElement = todo.render();
 
         this.todosContainer.appendChild(todoElement);
+
+        // Reinstantiate function for each new project
+        deleteItem();
 
         this.clearInputFields();
     }
