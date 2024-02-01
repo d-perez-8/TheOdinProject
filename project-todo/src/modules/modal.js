@@ -3,6 +3,7 @@ const todoModal = document.querySelector(".addTodoModal");
 const toggleProjectButton = document.querySelector(".addProject");
 const projectModal = document.querySelector(".addProjectModal");
 const editTodoModal = document.querySelector(".editTodoModal");
+const editProjectModal = document.querySelector(".editProjectModal");
 
 // Toggle Todo Modal
 export const toggleTodoModal = () => {
@@ -30,20 +31,16 @@ export const closeModal = () => {
     }));
 }
 
-
-/////// TODO: ADD EDITING FUNCTIONALITY //////
-
-
 // Edit Todo Modal
 export const editTodo = () => {
-    // Date From existing todo
+    // Get DOM Elemenets
     const editBtn = document.querySelectorAll(".editTodo");
     const todoTitle = document.querySelectorAll(".todoTitle");
     const todoDescription = document.querySelectorAll(".todoDescription");
     const todoDueDate = document.querySelectorAll(".dueDate");
     const editTodoForm = document.querySelector("#editTodo");
 
-    // To Edit Modal
+    // Get Modal Elements
     const editTitle = document.querySelector("#editTitle");
     const editDescription = document.querySelector("#editDescription");
     const editDueDate = document.querySelector("#editDueDate");
@@ -70,9 +67,36 @@ export const editTodo = () => {
                 todoDueDate[index].textContent = editDueDate.value;
                 editTodoModal.classList.add('hidden');
             })
-
         });
     });
 }
 
 //Edit Project Modal
+export const editProject = () => {
+    //Get DOM Elements
+    const editBtn = document.querySelectorAll(".editProject");
+    const projectTitle = document.querySelectorAll(".projectTitle");
+    const editProjectForm = document.querySelector("#editProject");
+
+    //Get Modal Elements
+    const editTitle = document.querySelector("#edit-title");
+
+    editBtn.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            //Show Modal
+            editProjectModal.classList.toggle('hidden');
+
+            //Populate Modal
+            const title = projectTitle[index].textContent;
+
+            editTitle.value = title;
+
+            //Save new edits
+            editProjectForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                projectTitle[index].textContent = editTitle.value;
+                editProjectModal.classList.add('hidden');
+            })
+        });
+    });
+}
