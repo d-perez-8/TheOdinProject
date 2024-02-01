@@ -1,4 +1,5 @@
 import { createDOMElement } from "./createDomElement";
+import { editProject } from './modal.js';
 import { deleteItem } from './deleteItem';
 
 
@@ -44,10 +45,12 @@ export default class ProjectFormHandle {
 
         this.projectsContainer.appendChild(projectElement);
 
+        this.clearInputFields();
+
         // Reinstantiate function for each new project
         deleteItem();
-
-        this.clearInputFields();
+        editProject();
+    
     }
 
     clearInputFields() {
