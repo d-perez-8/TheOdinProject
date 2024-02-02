@@ -2,7 +2,6 @@ import { createDOMElement } from "./createDomElement";
 import { editProject } from './modal.js';
 import { deleteItem } from './deleteItem';
 
-
 // Submit Project Modal Form
 class Project {
     constructor(title) {

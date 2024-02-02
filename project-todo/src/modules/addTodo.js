@@ -1,6 +1,7 @@
 import { createDOMElement } from './createDomElement';
 import { editTodo } from './modal';
 import { deleteItem } from './deleteItem';
+import { format } from 'date-fns';
 
 class Todo {
     constructor(title, description, dueDate) {
@@ -13,7 +14,7 @@ class Todo {
         const todo = createDOMElement('li', '', { class: 'todo' });
         const title = createDOMElement('span', this.title, { class: 'todoTitle' });
         const description = createDOMElement('span', this.description, { class: 'todoDescription' });
-        const dueDate = createDOMElement('span', this.dueDate, { class: 'dueDate' });
+        const dueDate = createDOMElement('span', format(this.dueDate, 'MMMM dd, yyyy'), { class: 'dueDate' });
         const editTodo = createDOMElement('button', 'Edit', { class: 'editTodo' });
         const removeTodo = createDOMElement('button', 'Remove', { class: 'removeTodo deleteBtn' });
         
