@@ -7,86 +7,55 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="addTodoModal hidden">
+    <dialog id="todoForm">
         <h2>Add Todo</h2>
-        <form id="todoForm">
+        <form method="dialog">
             <label for="title">Title</label>
             <input type="text" id="title" required>
             <label for="description">Description</label>
             <input type="text" id="description" required>
             <label for="dueDate">Due Date</label>
             <input type="date" id="dueDate" required>
-            <button type="submit" class="add">Add Todo</button>
+            <button type="submit" id="add-or-update-todo-button">Add Todo</button>
+            <button type="button" id="close-todo-form-button">Close</button>
         </form>
-        <button type="button" class="cancel">Cancel</button>
-
-    </div>
-    <div class="addProjectModal hidden">
+    </dialog>
+    <dialog id="confirm-close-dialog">
+        <form method="dialog">
+            <p class="discard-message-text">Discard unsaved changes?</p>
+            <div class="confirm-close-dialog-btn-container">
+              <button id="cancel-btn" class="btn">
+                Cancel
+              </button>
+              <button id="discard-btn" class="btn">
+                Discard
+              </button>
+            </div>
+          </form>
+    </dialog>
+    <!-- <dialog id="projectForm" class="hidden">
         <h2>Add Project</h2>
-        <form id="projectForm">
+        <form method="dialog">
             <label for="project-title">Title</label>
             <input type="text" id="project-title" required>
             <button type="submit" class="add">Add Project</button>
         </form>
-        <button type="button" class="cancel">Cancel</button>
-    </div>
-    <div class="editTodoModal hidden">
-        <h2>Edit Todo</h2>
-        <form id="editTodo">
-            <label for="editTitle">Title</label>
-            <input type="text" id="editTitle" required>
-            <label for="editDescription">Description</label>
-            <input type="text" id="editDescription" required>
-            <label for="editDueDate">Due Date</label>
-            <input type="date" id="editDueDate" required>
-            <button type="submit" class="edit">Save</button>
-        </form>
-        <button type="button" class="cancel">Cancel</button>
-    </div>
-    <div class="editProjectModal hidden">
-        <h2>Edit Project</h2>
-        <form id="editProject">
-            <label for="edit-title">Title</label>
-            <input type="text" id="edit-title" required>
-            <button type="submit" class="edit">Save</button>
-        </form>
-        <button type="button" class="cancel">Cancel</button>
-    </div>
+        <button type="button" id="cancel">Cancel</button>
+    </dialog> -->
     <div class="content">
         <nav>
             <h1>Todo App</h1>
             <h2>Projects</h2>
-                <ul class="projects">
-                    <li class="'project">
-                        <span class="projectTitle">Project 1</span>
-                        <button class="editProject">E</button>
-                        <button class="deleteProject deleteBtn">D</button>
-                    </li>
-                </ul>
+            <div id="projectsContainer"></div>
             <h2>Todos</h2>
         </nav>
         <main>
             <header>
-                <h2 class="title">Your Todos</h2>
-                <button class="btn addTodo">Add Todo</button>
-                <button class="btn addProject">Add Project</button>
+                <h2>Your Todos</h2>
+                <button id="openTodoForm" class="btn addTodo">Add Todo</button>
+                <button id="openProjectForm" class="btn addProject">Add Project</button>
             </header>
-            <ul class="todos">
-                <li class="todo">
-                    <span class="todoTitle">Todo</span>
-                    <span class="todoDescription">Description</span>
-                    <span class="dueDate">2312-12-31</span>
-                    <button class="editTodo">Edit</button>
-                    <button class="removeTodo deleteBtn">Remove</button>
-                </li>
-                <li class="todo">
-                    <span class="todoTitle">Todo 2</span>
-                    <span class="todoDescription">Description</span>
-                    <span class="dueDate">2312-12-31</span>
-                    <button class="editTodo">Edit</button>
-                    <button class="removeTodo deleteBtn">Remove</button>
-                </li>
-            </ul>
+            <div id="todoContainer"></div>
         </main>
         <footer>
             <p>Made by <a href="https://danielperez.dev">Daniel Perez</a> &copy; 2024</p>
@@ -95,3 +64,4 @@
     <script src="main.js"></script>
 </body>
 </html>
+
