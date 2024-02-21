@@ -1,4 +1,4 @@
-import { deleteTodo } from "./modules/deleteItem";
+import { deleteTodo, deleteProject } from "./modules/deleteItem";
 
 // DOM Elements
 const todoContainer = document.querySelector("#todoContainer");
@@ -7,21 +7,25 @@ const projectForm = document.querySelector('#projectForm');
 const projectContainer = document.querySelector('#projectContainer');
 const openTodoFormBtn = document.querySelector('#openTodoForm');
 const openProjectFormBtn = document.querySelector('#openProjectForm');
-const closeProjectFormBtn = document.querySelector('#closeProjectForm');
 const addOrUpdateTodoBtn = document.querySelector('#add-or-update-todo-button');
+const addOrUpdateProjectBtn = document.querySelector('#add-or-update-project-button');
 const closeTodoFormBtn = document.querySelector('#close-todo-form-button');
+const closeProjectFormBtn = document.querySelector('#close-project-form-button');
 const discardTodoBtn = document.querySelector('#discard-btn');
 const confirmCloseDialog = document.querySelector('#confirm-close-dialog');
 const cancelTodoBtn = document.querySelector('#cancel-btn');
+
 
 // Input elements
 const titleInput = document.querySelector("#title");
 const descriptionInput = document.querySelector("#description");
 const dueDateInput = document.querySelector("#dueDate");
-
+const projectTitleInput = document.querySelector('#project-title');
 
 const todoData = JSON.parse(localStorage.getItem('data')) || [];
+const projectData = JSON.parse(localStorage.getItem('projects')) || [];
 let currentTodo = {};
+let currentProject = {};
 
 const addOrUpdateTodo = () => {
     const dataArrIndex = todoData.findIndex(todo => todo.id === currentTodo.id);
@@ -40,6 +44,24 @@ const addOrUpdateTodo = () => {
     
     localStorage.setItem('data', JSON.stringify(todoData));
     updateTodoContainer();
+    reset();
+}
+
+const addOrUpdateProject = () => {
+    const projectdataArrIndex = projectData.findIndex(project => project.id === currentProject.id);
+    const projectObj = {
+        id: `${projectTitleInput.value.toLowerCase()}-${Date.now()}`,
+        title: projectTitleInput.value
+    };
+
+    if (projectdataArrIndex < 0) {
+        projectData.push(projectObj);
+    } else {
+        projectData[projectdataArrIndex] = projectObj;
+    }
+    
+    localStorage.setItem('projects', JSON.stringify(projectData));
+    updateProjectContainer();
     reset();
 }
 
@@ -69,6 +91,30 @@ const updateTodoContainer = () => {
     })
 };
 
+const updateProjectContainer = () => {
+    projectContainer.innerHTML = '';
+    projectData.forEach(
+        ({ id, title }) => {
+            (projectContainer.innerHTML += `
+                <div class="project" id="${id}">
+                    <span>${title}</span>
+                    <button type='button' class="edit-project-btn btn">Edit</button>
+                    <button type="button" class="delete-project-btn btn">Delete</button>
+                </div>
+            `)
+        }
+    );
+    const editProjectBtns = document.querySelectorAll('.edit-project-btn');
+    const deleteProjectBtns = document.querySelectorAll('.delete-project-btn');
+
+    editProjectBtns.forEach((btn) => {
+        btn.addEventListener('click', (event) => editProject(event.target))
+    })
+    deleteProjectBtns.forEach((btn) => {
+        btn.addEventListener('click', (event) => deleteProject(event.target))
+    })
+}
+
 const editTodo = (buttonEl) => {
     const dataArrIndex = todoData.findIndex(todo => todo.id === buttonEl.parentElement.id);
 
@@ -83,6 +129,18 @@ const editTodo = (buttonEl) => {
     todoForm.showModal();
 }
 
+const editProject = (buttonEl) => {
+    const dataArrIndex = projectData.findIndex(project => project.id === buttonEl.parentElement.id);
+
+    currentProject = projectData[dataArrIndex];
+
+    projectTitleInput.value = currentProject.title;
+
+    addOrUpdateProjectBtn.innerText = 'Update';
+
+    projectForm.showModal();
+}
+
 const reset = () => {
     titleInput.value = "";
     descriptionInput.value = "";
@@ -91,12 +149,26 @@ const reset = () => {
     currentTodo = {};
 }
 
+const resetProject = () => {
+    titleInput.value = ""
+    projectForm.close();
+    currentProject = {};
+}
+
 if (todoData.length) {
     updateTodoContainer();
 }
 
+if (projectData.length) {
+    updateProjectContainer();
+}
+
 openTodoFormBtn.addEventListener('click', () => {
     todoForm.showModal();
+})
+
+openProjectFormBtn.addEventListener('click', () => {
+    projectForm.showModal();
 })
 
 closeTodoFormBtn.addEventListener('click', () => {
@@ -104,6 +176,13 @@ closeTodoFormBtn.addEventListener('click', () => {
     const formInputValuesUpdated = titleInput.value !== currentTodo.title || descriptionInput.value !== currentTodo.description || dueDateInput.value !== currentTodo.dueDate;
 
     return (formInputContainValues && formInputValuesUpdated) ? confirmCloseDialog.showModal() : reset();
+})
+
+closeProjectFormBtn.addEventListener('click', () => {
+    const formInputContainValues = titleInput.value;
+    const formInputValuesUpdated = titleInput.value !== currentProject.title;
+
+    return (formInputContainValues && formInputValuesUpdated) ? confirmCloseDialog.showModal() : resetProject();
 })
 
 cancelTodoBtn.addEventListener('click', () => {
@@ -118,4 +197,9 @@ discardTodoBtn.addEventListener('click', () => {
 todoForm.addEventListener('submit', (event) => {
     event.preventDefault();
     addOrUpdateTodo();
+})
+
+projectForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addOrUpdateProject();
 })
