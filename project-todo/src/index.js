@@ -1,6 +1,4 @@
-import { deleteTodo, deleteProject } from "./modules/deleteItem";
 import { format } from "date-fns";
-
 
 // DOM Elements
 const todoContainer = document.querySelector("#todoContainer");
@@ -141,6 +139,22 @@ const editProject = (buttonEl) => {
     addOrUpdateProjectBtn.innerText = 'Update';
 
     projectForm.showModal();
+}
+
+const deleteTodo = (buttonEl) => {
+    const dataArrIndex = todoData.findIndex(todo => todo.id === buttonEl.parentElement.id);
+
+    buttonEl.parentElement.remove();
+    todoData.splice(dataArrIndex, 1);
+    localStorage.setItem("data", JSON.stringify(todoData));
+}
+
+const deleteProject = (buttonEl) => {
+    const dataArrIndex = projectData.findIndex(project => project.id === buttonEl.parentElement.id);
+
+    buttonEl.parentElement.remove();
+    projectData.splice(dataArrIndex, 1);
+    localStorage.setItem("projects", JSON.stringify(projectData));
 }
 
 const reset = () => {
