@@ -1,4 +1,6 @@
 import { deleteTodo, deleteProject } from "./modules/deleteItem";
+import { format } from "date-fns";
+
 
 // DOM Elements
 const todoContainer = document.querySelector("#todoContainer");
@@ -33,7 +35,7 @@ const addOrUpdateTodo = () => {
         id: `${titleInput.value.toLowerCase()}-${Date.now()}`,
         title: titleInput.value,
         description: descriptionInput.value,
-        dueDate: dueDateInput.value
+        dueDate: format(dueDateInput.value, 'MM/dd/yyyy')
     };
 
     if (dataArrIndex < 0) {
@@ -155,6 +157,7 @@ const resetProject = () => {
     currentProject = {};
 }
 
+// Populates items on refresh
 if (todoData.length) {
     updateTodoContainer();
 }
