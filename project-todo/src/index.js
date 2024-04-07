@@ -15,7 +15,6 @@ const discardTodoBtn = document.querySelector('#discard-btn');
 const confirmCloseDialog = document.querySelector('#confirm-close-dialog');
 const cancelTodoBtn = document.querySelector('#cancel-btn');
 
-
 // Input elements
 const titleInput = document.querySelector("#title");
 const descriptionInput = document.querySelector("#description");
@@ -62,7 +61,7 @@ const addOrUpdateProject = () => {
     
     localStorage.setItem('projects', JSON.stringify(projectData));
     updateProjectContainer();
-    reset();
+    resetProject();
 }
 
 const updateTodoContainer = () => {
