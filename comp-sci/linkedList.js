@@ -15,7 +15,6 @@ class LinkedList {
         const node = new Node(value);
         let current;
 
-        // If head is empty
         if (!this.head) {
             this.head = node;
         } else {
@@ -152,10 +151,10 @@ class LinkedList {
     }
 }
 
-// const ll = new LinkedList()
-// ll.prepend(100);
-// ll.prepend(200);
-// ll.prepend(300);
-// ll.append(400);
-// ll.removeAt(0);
-// console.log(ll.toString());
+const ll = new LinkedList()
+ll.prepend(100);
+ll.prepend(200);
+ll.prepend(300);
+ll.append(400);
+ll.removeAt(0);
+console.log(ll.toString());
