@@ -1,7 +1,3 @@
-// TODO: Make cards shuffle after each click
-// TODO: Add card flip animation when a card is clicked
-
-
 import './App.css'
 import Header from './components/Header';
 import Card from './components/Card';
@@ -13,6 +9,7 @@ function App() {
     const [personal, setPersonal] = useState(Number(localStorage.getItem("personal")));
     const [clickedPlayers, setClickedPlayers] = useState([]);
     const [shuffledPlayers, setShuffledPlayers] = useState([...players]);
+    const [flipped, setFlipped] = useState(false);
 
     // updates local storage when personal best changes
     useEffect(() => {
@@ -25,9 +22,8 @@ function App() {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]]
       }
-      return arr
+      return arr;
     }
-
 
     // handles game logic
     function handleCardClick(playerName) {
@@ -41,13 +37,20 @@ function App() {
           setPersonal(s => s + 1)
         }
       }
-      setShuffledPlayers(shuffler([...shuffledPlayers]))
+      // flip
+      setFlipped(true);
+      setTimeout(() => {
+        setFlipped(false);
+      }, 600)
+      
+      // everyday im shuffling
+      setShuffledPlayers(shuffler([...shuffledPlayers]));
     }
 
     const list = shuffledPlayers.map(player => (
-      <li key= { player.id }>
+      <li key={ player.id }>
         <button onClick={() => handleCardClick(player.name)}>
-          <Card name={player.name} src={player.img} />
+          <Card name={player.name} src={player.img} flipped={ flipped }/>
         </button>
       </li>
     ));
@@ -58,7 +61,7 @@ function App() {
     <>
       <Header 
         title="NBA Memory Game"
-        subtitle="Pick the unchoosen player to increase your score"
+        subtitle="Pick the unchoosen player to increase your score to 10"
         score={score}
         personal={personal}
       />
